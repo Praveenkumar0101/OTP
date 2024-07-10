@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("KupOBg18M4N-GNa_u");
+        })();
+    </script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 550px;
+}
+
+
+form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin: 5% 10% ;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.email {
+    display: flex;
+    margin: 0px 10% 5% 10% ;
+}
+
+.email input {
+    width: 200%;
+    padding: 3px;
+    margin-right: 3px;
+    box-sizing: border-box;
+}
+
+.verify{
+    width: 5px;
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button {
+    width: 50%;
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit{
+    margin-left: 25%;
+}
+
+button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button[type="button"] {
+    width: 130px;
+    background-color: #007bff;
+}
+
+button:hover{
+    background-color: blue;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+input:invalid:focus::after {
+    content: attr(title);
+    color: red;
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="wallpaper-674.jpeg" width="250vh" height="100%" alt="image" />
+        </div>
+        <form id="registrationForm">
+            <h2>Registration Form</h2>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required required pattern="[a-zA-Z\s]+" title="Name should not contain numbers or symbols.">
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required pattern="\d{10}" title="Phone number should be 10 digits and contain only numbers.">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0%;">
+                <label for="email">Email</label>
+            </div>
+                <div class="email">
+                    <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address.">
+                    <button type="button" class="verify" id="sendOtpButton">Verify</button>
+                </div>
+            
+            <div class="form-group" id="otpSection" style="display: none;">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" name="otp" required>
+                <button type="button" id="verifyOtpButton">Verify OTP</button>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="submit" class="submit" id="submitButton" disabled>Submit</button>
+        </form>
+    </div>
+    <script>
+        
+(function(){
+    emailjs.init("KupOBg18M4N-GNa_u");
+ })();
+ 
+
+                             // to send OTP
+
+ document.getElementById('sendOtpButton').addEventListener('click', function() {
+     const email = document.getElementById('email').value;
+     const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
+ 
+     console.log(otp)
+     localStorage.setItem('otp', otp);
+ 
+     
+     emailjs.send('service_ne8hpc7', 'template_gu1wnhn', {
+         to_email: email,
+         otp: otp
+     })
+     .then(function(response) {
+         console.log('SUCCESS!', response.status, response.text);
+         alert('OTP sent to your email!');
+         document.getElementById('otpSection').style.display = 'block';
+     }, function(error) {
+         console.error('FAILED...', error);
+     });
+ });
+
+ 
+                  // OTP verification
+
+ document.getElementById('verifyOtpButton').addEventListener('click', function() {
+     const enteredOtp = document.getElementById('otp').value;
+     const storedOtp = localStorage.getItem('otp');
+ 
+     if (enteredOtp === storedOtp) {
+         alert('OTP verified successfully!');
+         document.getElementById('submitButton').disabled = false;
+     } else {
+         alert('Invalid OTP. Please try again.');
+     }
+ });
+
+ 
+ 
+ document.getElementById('registrationForm').addEventListener('submit', function(event) {
+     event.preventDefault();
+ 
+     const password = document.getElementById('password').value;
+     const confirmPassword = document.getElementById('confirmPassword').value;
+ 
+     if (password !== confirmPassword) {
+         alert('Passwords do not match!');
+     } else {
+         alert('Registration successful!');
+
+         location.reload();
+     }
+ });
+ 
+    </script>
+</body>
+</html>
