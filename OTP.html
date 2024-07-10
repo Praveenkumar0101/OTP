@@ -13,118 +13,137 @@
     </script>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-.container {
-    display: flex;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 550px;
-}
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            width: 60%;
+            max-width: 900px;
+        }
 
+        .container img {
+            border-radius: 8px 0 0 8px;
+            width: 100%;
+            max-width: 250px;
+            object-fit: cover;
+        }
 
-form h2 {
-    text-align: center;
-    margin-bottom: 10px;
-}
+        form {
+            flex-grow: 1;
+            padding: 20px;
+        }
 
-.form-group {
-    margin: 5% 10% ;
-}
+        form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-.form-group label {
-    display: block;
-    margin-bottom: 2px;
-}
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-.form-group input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
 
-.email {
-    display: flex;
-    margin: 0px 10% 5% 10% ;
-}
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-.email input {
-    width: 200%;
-    padding: 3px;
-    margin-right: 3px;
-    box-sizing: border-box;
-}
+        .email {
+            display: flex;
+            align-items: center;
+        }
 
-.verify{
-    width: 5px;
-    padding: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+        .email input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            margin-right: -1px;
+        }
 
-button {
-    width: 50%;
-    padding: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+        .verify, #verifyOtpButton, button[type="submit"] {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.submit{
-    margin-left: 25%;
-}
+        .verify {
+            border-radius: 0 4px 4px 0;
+        }
 
-button[disabled] {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
+        .verify:hover, #verifyOtpButton:hover, button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
-button[type="button"] {
-    width: 130px;
-    background-color: #007bff;
-}
+        .submit {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
 
-button:hover{
-    background-color: blue;
-}
+        .submit:hover {
+            background-color: #218838;
+        }
 
-input:invalid {
-    border: 2px solid red;
-}
+        .submit[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
 
-input:invalid:focus::after {
-    content: attr(title);
-    color: red;
-    font-size: 12px;
-    margin-top: -5px;
-    margin-bottom: 10px;
-}
+        input:invalid {
+            border-color: red;
+        }
 
+        input:invalid:focus::after {
+            content: attr(title);
+            color: red;
+            font-size: 12px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="img">
-            <img src="wallpaper-674.jpeg" width="250vh" height="100%" alt="image" />
+            <img src="wallpaper-674.jpeg" alt="image" />
         </div>
         <form id="registrationForm">
             <h2>Registration Form</h2>
             <div class="form-group">
                 <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" required required pattern="[a-zA-Z\s]+" title="Name should not contain numbers or symbols.">
+                <input type="text" id="fullname" name="fullname" required pattern="[a-zA-Z\s]+" title="Name should not contain numbers or symbols.">
             </div>
             <div class="form-group">
                 <label for="mobile">Mobile Number</label>
@@ -134,14 +153,13 @@ input:invalid:focus::after {
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
-            <div class="form-group" style="margin-bottom: 0%;">
+            <div class="form-group">
                 <label for="email">Email</label>
-            </div>
                 <div class="email">
                     <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address.">
                     <button type="button" class="verify" id="sendOtpButton">Verify</button>
                 </div>
-            
+            </div>
             <div class="form-group" id="otpSection" style="display: none;">
                 <label for="otp">Enter OTP</label>
                 <input type="text" id="otp" name="otp" required>
@@ -159,67 +177,54 @@ input:invalid:focus::after {
         </form>
     </div>
     <script>
+        (function(){
+            emailjs.init("KupOBg18M4N-GNa_u");
+        })();
         
-(function(){
-    emailjs.init("KupOBg18M4N-GNa_u");
- })();
- 
+        document.getElementById('sendOtpButton').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
+            console.log(otp);
+            localStorage.setItem('otp', otp);
 
-                             // to send OTP
+            emailjs.send('service_ne8hpc7', 'template_gu1wnhn', {
+                to_email: email,
+                otp: otp
+            })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('OTP sent to your email!');
+                document.getElementById('otpSection').style.display = 'block';
+            }, function(error) {
+                console.error('FAILED...', error);
+            });
+        });
 
- document.getElementById('sendOtpButton').addEventListener('click', function() {
-     const email = document.getElementById('email').value;
-     const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
- 
-     console.log(otp)
-     localStorage.setItem('otp', otp);
- 
-     
-     emailjs.send('service_ne8hpc7', 'template_gu1wnhn', {
-         to_email: email,
-         otp: otp
-     })
-     .then(function(response) {
-         console.log('SUCCESS!', response.status, response.text);
-         alert('OTP sent to your email!');
-         document.getElementById('otpSection').style.display = 'block';
-     }, function(error) {
-         console.error('FAILED...', error);
-     });
- });
+        document.getElementById('verifyOtpButton').addEventListener('click', function() {
+            const enteredOtp = document.getElementById('otp').value;
+            const storedOtp = localStorage.getItem('otp');
 
- 
-                  // OTP verification
+            if (enteredOtp === storedOtp) {
+                alert('OTP verified successfully!');
+                document.getElementById('submitButton').disabled = false;
+            } else {
+                alert('Invalid OTP. Please try again.');
+            }
+        });
 
- document.getElementById('verifyOtpButton').addEventListener('click', function() {
-     const enteredOtp = document.getElementById('otp').value;
-     const storedOtp = localStorage.getItem('otp');
- 
-     if (enteredOtp === storedOtp) {
-         alert('OTP verified successfully!');
-         document.getElementById('submitButton').disabled = false;
-     } else {
-         alert('Invalid OTP. Please try again.');
-     }
- });
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
- 
- 
- document.getElementById('registrationForm').addEventListener('submit', function(event) {
-     event.preventDefault();
- 
-     const password = document.getElementById('password').value;
-     const confirmPassword = document.getElementById('confirmPassword').value;
- 
-     if (password !== confirmPassword) {
-         alert('Passwords do not match!');
-     } else {
-         alert('Registration successful!');
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
 
-         location.reload();
-     }
- });
- 
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+            } else {
+                alert('Registration successful!');
+                location.reload();
+            }
+        });
     </script>
 </body>
 </html>
