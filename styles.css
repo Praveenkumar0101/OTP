@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #163665;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(76, 175, 80, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 34%;
+    max-width: 900px;
+}
+h2{
+    font-family: cursive;
+}
+
+.container img {
+    border-radius: 8px 0 0 8px;
+    width: 100%;
+    max-width: 250px;
+    object-fit: cover;
+}
+
+form {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0c0c0c;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #0b0a0a;
+}
+
+.form-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+}
+
+.email input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    margin-right: -1px;
+}
+
+.verify, #verifyOtpButton, button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.verify {
+    border-radius: 0 4px 4px 0;
+}
+
+.verify:hover, #verifyOtpButton:hover, button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: rgb(35, 78, 138);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.submit:hover {
+    background-color: #218838;
+}
+
+.submit[disabled] {
+    background-color: #1f2ed3;
+    cursor: not-allowed;
+}
+
+input:invalid {
+    border-color: rgb(69, 59, 59);
+}
+
+input:invalid:focus::after {
+    content: attr(title);
+    color: rgb(192, 33, 33);
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
