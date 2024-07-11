@@ -14,16 +14,19 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #163665;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-image: url("https://www.hdwallpaper.nu/wp-content/uploads/2016/12/vector-16.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .container {
-            background-color: #fff;
+            background: rgba(76, 175, 80, 0.2);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -47,7 +50,7 @@
         form h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            color: #0c0c0c;
         }
 
         .form-group {
@@ -58,7 +61,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #555;
+            color: #0b0a0a;
         }
 
         .form-group input {
@@ -104,7 +107,7 @@
             width: 100%;
             padding: 10px;
             background-color: #28a745;
-            color: white;
+            color: rgb(35, 78, 138);
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -117,17 +120,17 @@
         }
 
         .submit[disabled] {
-            background-color: #ccc;
+            background-color: #1f2ed3;
             cursor: not-allowed;
         }
 
         input:invalid {
-            border-color: red;
+            border-color: rgb(69, 59, 59);
         }
 
         input:invalid:focus::after {
             content: attr(title);
-            color: red;
+            color: rgb(192, 33, 33);
             font-size: 12px;
             margin-top: -5px;
             margin-bottom: 10px;
@@ -136,9 +139,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="img">
-            <img src="wallpaper-674.jpeg" alt="image" />
-        </div>
         <form id="registrationForm">
             <h2>Registration Form</h2>
             <div class="form-group">
